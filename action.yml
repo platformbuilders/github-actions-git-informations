@@ -14,9 +14,11 @@ runs:
       id: get_branch
 
     - name: Get Commit Id
-      id: get_commit_id
+      shell: bash
       run: echo ::set-output name=COMMIT_ID::${GITHUB_SHA::7}
+      id: get_commit_id
 
     - name: Set output
-      id: vars
+      shell: bash      
       run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
+      id: vars
