@@ -5,6 +5,19 @@ branding:
   icon: feather
   color: gray-dark
 
+outputs:
+  get_branch:
+    description: "The branch name"
+    value: ${{ steps.get_branch.outputs.branch }}
+
+  get_commit_id:
+    description: "The commit id hash"
+    value: ${{ steps.get_commit_id.outputs.COMMIT_ID }}
+
+  vars:
+    description: "The tag name"
+    value: ${{ steps.vars.outputs.tag }}
+
 runs:
   using: "composite"
   steps:
