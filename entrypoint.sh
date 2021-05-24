@@ -4,6 +4,20 @@ echo ${GITHUB_REF#refs/heads/}
 echo ${GITHUB_SHA::7}
 echo ${GITHUB_REF#refs/*/}
 
-echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-echo "::set-output name=COMMIT_ID::${GITHUB_SHA::7}"
-echo "::set-output name=tag::${GITHUB_REF#refs/*/}"
+REF=${GITHUB_REF#refs/heads/}
+COMMIT_ID=${GITHUB_SHA::7}
+
+if [[ "$REF" == "develop" ]]; then
+    printf "Branch name: $REF \n Commit ID: $COMMIT_ID"
+    echo "RELEASE_VERSION=$COMMIT_ID" >> $GITHUB_ENV
+    echo "GITOPS_BRANCH=develop" >> $GITHUB_ENV
+
+elif [[ $REF == *"tag"* ]]; then
+    printf "New tag: tag::${GITHUB_REF#refs/*/}"
+    echo "RELEASE_VERSION=tag::${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+    echo "GITOPS_BRANCH=release" >> $GITHUB_ENV
+
+fi
+
+echo $RELEASE_VERSION
+echo $GITOPS_BRANCH
