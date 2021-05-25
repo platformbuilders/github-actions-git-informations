@@ -8,7 +8,7 @@ REF=${GITHUB_REF#refs/heads/}
 COMMIT_ID=${GITHUB_SHA::7}
 
 if [[ "$REF" == "develop" ]]; then
-    printf "Branch name: $REF \n Commit ID: $COMMIT_ID"
+    printf "Branch name: $REF \nCommit ID: $COMMIT_ID"
     echo "RELEASE_VERSION=$COMMIT_ID" >> $GITHUB_ENV
     echo "GITOPS_BRANCH=develop" >> $GITHUB_ENV
 
@@ -18,6 +18,3 @@ elif [[ $REF == *"tag"* ]]; then
     echo "GITOPS_BRANCH=release" >> $GITHUB_ENV
 
 fi
-
-echo $RELEASE_VERSION
-echo $GITOPS_BRANCH
