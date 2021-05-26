@@ -1,4 +1,4 @@
-#!/bin/sh -x
+#!/bin/bash -x
 
 echo ${GITHUB_REF#refs/heads/}
 echo ${GITHUB_SHA::7}
