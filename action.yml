@@ -5,37 +5,6 @@ branding:
   icon: feather
   color: gray-dark
 
-# outputs:
-#   get_branch:
-#     description: "The branch name"
-#     value: ${{ steps.get_branch.outputs.branch }}
-
-#   get_commit_id:
-#     description: "The commit id hash"
-#     value: ${{ steps.get_commit_id.outputs.COMMIT_ID }}
-
-#   vars:
-#     description: "The tag name"
-#     value: ${{ steps.vars.outputs.tag }}
-
 runs:
   using: 'docker'
   image: 'Dockerfile'
-
-# runs:
-#   using: "composite"
-#   steps:
-#     - name: Get Branch Name
-#       shell: bash
-#       run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-#       id: get_branch
-
-#     - name: Get Commit Id
-#       shell: bash
-#       run: echo ::set-output name=COMMIT_ID::${GITHUB_SHA::7}
-#       id: get_commit_id
-
-#     - name: Set output
-#       shell: bash      
-#       run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
-#       id: vars

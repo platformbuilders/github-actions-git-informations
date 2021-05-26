@@ -12,9 +12,8 @@ if [[ "$REF" == "develop" ]]; then
     echo "RELEASE_VERSION=$COMMIT_ID" >> $GITHUB_ENV
     echo "GITOPS_BRANCH=develop" >> $GITHUB_ENV
 
-elif [[ $REF == *"tag"* ]]; then
+elif [[ $REF == *"tags"* ]]; then
     printf "New tag: tag::${GITHUB_REF#refs/*/}"
     echo "RELEASE_VERSION=tag::${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
     echo "GITOPS_BRANCH=release" >> $GITHUB_ENV
-
 fi
