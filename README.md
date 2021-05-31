@@ -23,13 +23,12 @@ The list o env vars generated using this GitHub action:
       # Example using this actions
       - name: Get git repository informations
         uses: platformbuilders/github-actions-git-informations@master
-	  
+
       # Example generated env vars
       - name: Set up JDK 11
         if: ${{ env.GITOPS_BRANCH }} == 'develop' # <---- This line is the example
         uses: actions/setup-java@v1
         with:
           java-version: 11
-	  
 ```
 
