@@ -22,4 +22,13 @@ elif [[ ${GITHUB_REF#refs/*/} =~ ^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9
     echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
     echo "GITOPS_BRANCH=release" >> $GITHUB_ENV
 
+elif [[ "$REF" == "main" ]]; then
+    printf "Branch name: $REF \nCommit ID: $COMMIT_ID"
+    echo "RELEASE_VERSION=$COMMIT_ID" >> $GITHUB_ENV
+    echo "GITOPS_BRANCH=main" >> $GITHUB_ENV
+
+elif [[ "$REF" == "homolog" ]]; then
+    printf "Branch name: $REF \nCommit ID: $COMMIT_ID"
+    echo "RELEASE_VERSION=$COMMIT_ID" >> $GITHUB_ENV
+    echo "GITOPS_BRANCH=homolog" >> $GITHUB_ENV
 fi
